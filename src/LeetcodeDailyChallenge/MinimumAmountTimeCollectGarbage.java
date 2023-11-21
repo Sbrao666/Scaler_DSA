@@ -9,6 +9,42 @@ public class MinimumAmountTimeCollectGarbage {
         String[] garbage = {"G", "M", "P"};
         int[] travel = {1, 3};
         System.out.println(garbageCollection(garbage, travel));
+        System.out.println(garbageCollectionII(garbage, travel));
+    }
+
+    private static int garbageCollectionII(String[] garbage, int[] travel) {
+        int[] prefixSumForTravel = getPrefixSum(travel);
+        HashMap<Character, Integer> lastIndexOfGarbage = new HashMap<>();
+        HashMap<Character, Integer> totalTime = new HashMap<>();
+
+        for (int i = 0; i < garbage.length; i++) {
+            for (int j = 0; j < garbage[i].length(); j++) {
+                char currentChar = garbage[i].charAt(j);
+                lastIndexOfGarbage.put(currentChar, i);
+                totalTime.put(currentChar, totalTime.getOrDefault(currentChar, 0) + 1);
+            }
+        }
+
+        String garbageTypes = "MGP";
+        int totalTimeRequired = 0;
+
+        for (char c : garbageTypes.toCharArray()) {
+            if (totalTime.containsKey(c)) {
+                totalTimeRequired += prefixSumForTravel[lastIndexOfGarbage.get(c)] + totalTime.get(c);
+            }
+        }
+
+        return totalTimeRequired;
+    }
+
+    private static int[] getPrefixSum(int[] travel) {
+        int n = travel.length;
+        int[] prefixSum = new int[n + 1];
+        prefixSum[1] = travel[0];
+        for (int i = 1; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + travel[i];
+        }
+        return prefixSum;
     }
 
     private static int garbageCollection(String[] garbage, int[] travel) {
