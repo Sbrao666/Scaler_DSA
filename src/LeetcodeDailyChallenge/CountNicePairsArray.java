@@ -2,6 +2,9 @@ package LeetcodeDailyChallenge;
 
 import java.util.HashMap;
 
+
+//https://leetcode.com/problems/count-nice-pairs-in-an-array/
+
 public class CountNicePairsArray {
     public static void main(String[] args) {
         int[] A = {13, 10, 35, 24, 76};
@@ -18,7 +21,7 @@ public class CountNicePairsArray {
 
         for (int a : A) {
             int reversedNumber = reverseNumber(a);
-            int diff =reversedNumber - a;
+            int diff = reversedNumber - a;
             map.put(diff, map.getOrDefault(diff, (long) 0) + 1);
         }
 
