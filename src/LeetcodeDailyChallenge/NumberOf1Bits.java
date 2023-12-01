@@ -1,5 +1,5 @@
 package LeetcodeDailyChallenge;
-
+//https://leetcode.com/problems/number-of-1-bits/?envType=daily-question&envId=2023-11-29
 public class NumberOf1Bits {
     public static void main(String[] args) {
         int n = 00000000000000000000000000001011;

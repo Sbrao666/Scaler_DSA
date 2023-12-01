@@ -2,6 +2,8 @@ package LeetcodeDailyChallenge;
 
 import java.util.Scanner;
 
+//https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/
+
 public interface MinimumOneBitOperationsMakeIntegersZero {
     public static void main(String[] args) {
         int n = new Scanner(System.in).nextInt();
